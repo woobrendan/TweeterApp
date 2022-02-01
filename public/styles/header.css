@@ -1,5 +1,5 @@
-header {
-  /* padding-top: 200px; */
+.profile-header {
+  /* margin-top: 400px; */
   height: 100%;
   width: 100%;
   display: flex;
@@ -14,4 +14,9 @@ header {
 
 .avatar {
   margin-top: 18%;
+}
+
+.profile-header h2 {
+  display: inline-block;
+  text-align: center;
 }
