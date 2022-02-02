@@ -20,10 +20,13 @@
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css"/> 
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css"/> 
 
-    <!-- font-awesome -->
+    <!-- CDN - Font Awesome, TimeAgo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -53,33 +56,12 @@
       <section class='new-tweet'>
         <h2 class="new-tweet-header">Compose Tweet</h2>
         <form class="new-tweet-form"method="POST" action="/tweets/">
-          <!-- <label for="tweet-text">What are you humming about?</label> -->
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class="new-tweet-footer">
             <button class="tweetButton" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
-      </section>
-      <section class="tweet-container">
-        <header class="tweet-header">
-          <div>
-            <img src="/images/profile-hex.png"><!-- user avatar -->
-            <h3>User Name</h3>
-          </div>
-          <h4>User Handle</h4>
-        </header>
-          <article>
-            <p>Sample Text of some tweet</p>
-          </article>
-          <footer>
-            <h6>10 days before</h6>
-            <div>
-              <i class="fas fa-flag"></i>
-              <i class="fas fa-retweet"></i>
-              <i class="fas fa-heart"></i>
-            </div>
-          </footer>
       </section>
     </main>
   </body>
