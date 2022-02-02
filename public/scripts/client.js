@@ -74,3 +74,17 @@ const renderTweets = function(tweetArr) {
     $('.container').append(indivTweet)
   }
 }
+
+//Doc on ready
+$(() => {
+
+  //on form submit of new tweet
+  $('.new-tweet-form').on('submit', function(event){
+    event.preventDefault();
+    const tweetText = $(this).serialize();
+    console.log(tweetText)
+    $.post('/tweets/', tweetText).then(() => {
+  
+    })
+  })
+});
