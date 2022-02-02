@@ -58,10 +58,17 @@ $(() => {
   $('.new-tweet-form').on('submit', function(event){
     event.preventDefault();
     const tweetText = $(this).serialize();
-    console.log(tweetText)
-    $.post('/tweets/', tweetText).then(() => {
-  
-    })
+    console.log('this is tweettext:', tweetText)
+    if (tweetText.length < 6) {
+      alert('Tweet cannot be empty')
+    } else if (tweetText.length > 145) {
+      alert('Tweets must be under 140 characters.')
+    } else {
+      $.post('/tweets/', tweetText).then(() => {
+
+      })
+    }
+    
   })
 
   const loadTweets = function() {
