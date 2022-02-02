@@ -45,7 +45,6 @@ return layout;
 
 const renderTweets = function(tweetArr) {
   for (let tweet of tweetArr) {
-    console.log(tweet)
     const indivTweet = createTweetElement(tweet)
     $('.container').append(indivTweet)
   }
@@ -53,24 +52,7 @@ const renderTweets = function(tweetArr) {
 
 //Doc on ready
 $(() => {
-
-  //on form submit of new tweet
-  $('.new-tweet-form').on('submit', function(event){
-    event.preventDefault();
-    const tweetText = $(this).serialize();
-    console.log('this is tweettext:', tweetText)
-    if (tweetText.length < 6) {
-      alert('Tweet cannot be empty')
-    } else if (tweetText.length > 145) {
-      alert('Tweets must be under 140 characters.')
-    } else {
-      $.post('/tweets/', tweetText).then(() => {
-
-      })
-    }
-    
-  })
-
+  
   const loadTweets = function() {
     $.ajax({
       url: 'http://localhost:8080/tweets',
@@ -81,4 +63,39 @@ $(() => {
     })
   }
   loadTweets();
+  
+  
+  //on form submit of new tweet
+  $('.new-tweet-form').on('submit', function(event){
+    event.preventDefault();
+    const tweetText = $(this).serialize();
+    if (tweetText.length < 6) {
+      alert('Tweet cannot be empty')
+    } else if (tweetText.length > 145) {
+      alert('Tweets must be under 140 characters.')
+    } else {
+
+      //takes text submitted and creates array of object to pass to renderTweets
+      $.post('/tweets/', tweetText).then(() => {
+        loadTweets();
+        // const username = $('.profile-header h2').html();
+        // let imgSource = $('.profile-header img').parent().html().split('\"');
+        // let tweetString = tweetText.substring(5).replace('%20', ' ');
+        // let newTweet = [ {
+        //   "user": {
+        //       name: username,
+        //       avatars: imgSource[1],
+        //       handle: `@${username.split(' ').join('')}`
+        //   },
+        //   content: {
+        //     text: tweetString
+        //   },
+        //   created_at: Date.now()
+        //   }
+        // ]
+        // renderTweets(newTweet);
+      })
+    }
+    
+  })
 });

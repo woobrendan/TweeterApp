@@ -47,6 +47,7 @@
 article  {
   border-bottom: medium solid white;
   margin-left: 10px;
+  overflow-wrap: anywhere;
 }
 
 /* //// Footer //// */
