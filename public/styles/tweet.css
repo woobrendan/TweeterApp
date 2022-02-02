@@ -14,6 +14,7 @@
   box-shadow: 10px 10px 8px black;
 }
 
+/* ///// Header CSS ////// */
 .tweet-header  {
   display: flex;
   flex-direction: row;
@@ -34,15 +35,20 @@
 .tweet-header div {
   display: flex;
   align-self: flex-end;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
+.tweet-header h3 {
+  padding-left: 10px;
+}
 
+/* //// Article/body of Tweet ////  */
 article  {
   border-bottom: medium solid white;
   margin-left: 10px;
 }
 
+/* //// Footer //// */
 .tweet-container footer {
   height: 50px;
   display: flex;
