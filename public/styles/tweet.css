@@ -10,11 +10,24 @@
   padding-bottom: 15px;
 }
 
+.tweet-container:hover {
+  box-shadow: 10px 10px 8px black;
+}
+
 .tweet-header  {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  height: 120px;
+}
+
+.tweet-header div {
+  height: 100px;
+}
+.tweet-header img {
+  width: 50%; 
+  height: auto;
 }
 
 .tweet-header div {
