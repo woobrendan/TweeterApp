@@ -14,10 +14,7 @@
 .new-tweet-footer, .new-tweet-header {
   display: flex;
   justify-content: space-between;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin: 1% 5%;
 }
 
 #tweet-text {
