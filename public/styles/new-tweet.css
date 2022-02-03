@@ -30,3 +30,7 @@
   flex-direction: column;
 }
 
+.new-tweet:hover {
+  background-color:#90E0EF;
+  color: black;
+}
