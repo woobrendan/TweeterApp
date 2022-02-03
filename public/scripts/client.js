@@ -20,6 +20,10 @@ const errorType = (() => {
 
 });
 
+const resetTextForm = () => {
+  $('.counter').html(140);
+  $('#tweet-text').val('');
+};
 
 const escape = function(str) {
   let div = document.createElement("div");
@@ -64,6 +68,7 @@ const renderTweets = function(tweetArr) {
 $(() => {
   
   const loadTweets = function() {
+    resetTextForm();
     $('.tweets-container').empty();
     $.ajax({
       url: 'http://localhost:8080/tweets',
