@@ -16,7 +16,6 @@ html {
 
 body {
   color: #545149;
-  /* background-color: #f4f1ec; */
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
@@ -24,7 +23,7 @@ body {
   align-items: center;
   flex-direction: column;
   background-image: url('../images/cubes.png');
-  background-color: #41a3e49a;
+  background-color: #41a3e4f1;
 
 }
 
@@ -34,11 +33,7 @@ body {
 main {
   width: 90%;
   z-index: 1;
-  /* position: relative; */
-  display: flex;
-  /* flex-direction: column; */
+  display: flex; 
   justify-content: center;
   flex-direction: column-reverse;
-  background-image: url('../images/cubes.png');
-  background-color: #41a3e49a;
 }

@@ -16,6 +16,12 @@ const tweetData = {
   "created_at": 1643571093563
 }
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = (tweetData) => {
   const layout = `
   <section class="tweet-container">
@@ -27,7 +33,7 @@ const createTweetElement = (tweetData) => {
       <h4>${tweetData.user.handle}</h4>
     </header>
     <article class="tweet">
-      <p>${tweetData.content.text}</p>
+      <p>${escape(tweetData.content.text)}</p>
     </article>
     <footer>
       <h6>${timeago.format(tweetData.created_at)}</h6>
@@ -68,14 +74,18 @@ $(() => {
   //on form submit of new tweet
   $('.new-tweet-form').on('submit', function(event){
     event.preventDefault();
+    // const tweetText =  $('.tweet-container').text(unsafeTweetText)
+    
     const tweetText = $(this).serialize();
+    console.log('this is event: ', $('<article>').text(tweetText))
+
     if (tweetText.length < 6) {
       alert('Tweet cannot be empty')
     } else if (tweetText.length > 145) {
       alert('Tweets must be under 140 characters.')
     } else {
 
-      //takes text submitted and creates array of object to pass to renderTweets
+      //post new tweet info to /tweets route, remove then load all tweets including new
       $.post('/tweets/', tweetText).then(() => {
         $('.tweet-container').remove()
         loadTweets();
