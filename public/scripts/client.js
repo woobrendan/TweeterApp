@@ -4,8 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 const checkForError = (() => {
-  let tweet = document.forms['new-tweet-form']['text'].value
-  if(!tweet || tweet.length > 140) {
+  let tweet = document.forms['new-tweet-form']['text'].value;
+  if (!tweet || tweet.length > 140) {
     return true;
   } else return false;
 });
@@ -18,10 +18,10 @@ const errorType = (() => {
     $('#error').html('⛔⛔ Tweets cannot be over 140 characters! ⛔⛔');
   }
 
-})
+});
 
 
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -50,33 +50,33 @@ const createTweetElement = (tweetData) => {
     </footer>
   </article>`;
       
-  return layout;     
+  return layout;
 };
 
 const renderTweets = function(tweetArr) {
   for (let tweet of tweetArr) {
-    const indivTweet = createTweetElement(tweet)
-    $('.tweets-container').prepend(indivTweet)
+    const indivTweet = createTweetElement(tweet);
+    $('.tweets-container').prepend(indivTweet);
   }
-}
+};
 
 //Doc on ready
 $(() => {
   
   const loadTweets = function() {
-    $('.tweets-container').empty()
+    $('.tweets-container').empty();
     $.ajax({
       url: 'http://localhost:8080/tweets',
       method: 'GET',
       dataType: 'JSON'
     }).then((arrOfTweets) => {
       renderTweets(arrOfTweets);
-    })
-  }
+    });
+  };
   loadTweets();
   
   //on form submit of new tweet
-  $('.new-tweet-form').on('submit', function(event){
+  $('.new-tweet-form').on('submit', function(event) {
     event.preventDefault();
     // checkForError();
     const tweetText = $(this).serialize();
@@ -85,28 +85,9 @@ $(() => {
       $('#error').slideUp();
       $.post('/tweets/', tweetText).then(() => {
         loadTweets();
-      })
+      });
     } else {
       errorType();
     }
-  })
+  });
 });
-
-//Code to grab the current user info for posted tweet
-
-// const username = $('.profile-header h2').html();
-// let imgSource = $('.profile-header img').parent().html().split('\"');
-// let tweetString = tweetText.substring(5).replace('%20', ' ');
-// let newTweet = [ {
-//   "user": {
-//       name: username,
-//       avatars: imgSource[1],
-//       handle: `@${username.split(' ').join('')}`
-//   },
-//   content: {
-//     text: tweetString
-//   },
-//   created_at: Date.now()
-//   }
-// ]
-// renderTweets(newTweet);
