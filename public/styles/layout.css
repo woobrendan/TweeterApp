@@ -38,7 +38,7 @@ main {
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
   background-image: url('../images/cubes.png');
   background-color: #41a3e49a;
 }

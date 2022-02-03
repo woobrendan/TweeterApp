@@ -77,25 +77,29 @@ $(() => {
 
       //takes text submitted and creates array of object to pass to renderTweets
       $.post('/tweets/', tweetText).then(() => {
+        $('.tweet-container').remove()
         loadTweets();
-        // const username = $('.profile-header h2').html();
-        // let imgSource = $('.profile-header img').parent().html().split('\"');
-        // let tweetString = tweetText.substring(5).replace('%20', ' ');
-        // let newTweet = [ {
-        //   "user": {
-        //       name: username,
-        //       avatars: imgSource[1],
-        //       handle: `@${username.split(' ').join('')}`
-        //   },
-        //   content: {
-        //     text: tweetString
-        //   },
-        //   created_at: Date.now()
-        //   }
-        // ]
-        // renderTweets(newTweet);
       })
     }
     
   })
 });
+
+//Code to grab the current user info for posted tweet
+
+// const username = $('.profile-header h2').html();
+// let imgSource = $('.profile-header img').parent().html().split('\"');
+// let tweetString = tweetText.substring(5).replace('%20', ' ');
+// let newTweet = [ {
+//   "user": {
+//       name: username,
+//       avatars: imgSource[1],
+//       handle: `@${username.split(' ').join('')}`
+//   },
+//   content: {
+//     text: tweetString
+//   },
+//   created_at: Date.now()
+//   }
+// ]
+// renderTweets(newTweet);
