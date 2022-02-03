@@ -24,7 +24,7 @@ body {
   flex-direction: column;
   background-image: url('../images/cubes.png');
   background-color: #41a3e4f1;
-
+  margin: auto;
 }
 
 /*
@@ -36,4 +36,32 @@ main {
   display: flex; 
   justify-content: center;
   flex-direction: column-reverse;
+}
+/* Screen responsiveness */
+@media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    max-width: 1024px;
+    align-items: baseline;
+  } 
+
+
+ .profile-header {
+   margin-right: 100px;
+   margin-top: 40px;
+   } 
+
+  .container {
+    margin-top: 140px;
+  } 
+}
+
+@media only screen and (max-width: 505px) {
+  .clickToTweet {
+    font-size: 20px;
+  }
+
+  .profile-header {
+    margin-top: 40px;
+  }
 }

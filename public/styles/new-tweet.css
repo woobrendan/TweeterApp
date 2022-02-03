@@ -8,7 +8,7 @@
   color: #FFFFFF;
   margin-bottom: 20px;
   order: 5;
-  
+  border: thick solid white;
 }
 
 .new-tweet-footer, .new-tweet-header {
