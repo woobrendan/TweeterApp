@@ -3,18 +3,23 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+const checkForError = (() => {
+  let tweet = document.forms['new-tweet-form']['text'].value
+  if(!tweet || tweet.length > 140) {
+    return true;
+  } else return false;
+});
 
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-    "handle": "@SirIsaac"
-  },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
-  },
-  "created_at": 1643571093563
-}
+const errorType = (() => {
+  let errorTweet = document.forms['new-tweet-form']['text'].value;
+  if (!errorTweet) {
+    $('#error').html('⛔⛔ Tweets cannot be empty! ⛔⛔');
+  } else {
+    $('#error').html('⛔⛔ Tweets cannot be over 140 characters! ⛔⛔');
+  }
+
+})
+
 
 const escape = function (str) {
   let div = document.createElement("div");
@@ -24,7 +29,7 @@ const escape = function (str) {
 
 const createTweetElement = (tweetData) => {
   const layout = `
-  <section class="tweet-container">
+  <article class="tweet-container">
     <header class="tweet-header">
       <div>
         <img src="${tweetData.user.avatars}">
@@ -32,9 +37,9 @@ const createTweetElement = (tweetData) => {
       </div>
       <h4>${tweetData.user.handle}</h4>
     </header>
-    <article class="tweet">
+    <div class="tweet">
       <p>${escape(tweetData.content.text)}</p>
-    </article>
+    </div>
     <footer>
       <h6>${timeago.format(tweetData.created_at)}</h6>
       <div>
@@ -43,16 +48,15 @@ const createTweetElement = (tweetData) => {
         <i class="fas fa-heart"></i>
       </div>
     </footer>
-  </section>`;
+  </article>`;
       
-return layout;
-      
+  return layout;     
 };
 
 const renderTweets = function(tweetArr) {
   for (let tweet of tweetArr) {
     const indivTweet = createTweetElement(tweet)
-    $('.container').append(indivTweet)
+    $('.tweets-container').prepend(indivTweet)
   }
 }
 
@@ -60,6 +64,7 @@ const renderTweets = function(tweetArr) {
 $(() => {
   
   const loadTweets = function() {
+    $('.tweets-container').empty()
     $.ajax({
       url: 'http://localhost:8080/tweets',
       method: 'GET',
@@ -70,25 +75,20 @@ $(() => {
   }
   loadTweets();
   
-  
   //on form submit of new tweet
   $('.new-tweet-form').on('submit', function(event){
     event.preventDefault();
+    // checkForError();
     const tweetText = $(this).serialize();
 
-    if (tweetText.length < 6) {
-      alert('Tweet cannot be empty')
-    } else if (tweetText.length > 145) {
-      alert('Tweets must be under 140 characters.')
-    } else {
-
-      //post new tweet info to /tweets route, remove then load all tweets including new
+    if (!checkForError()) {
+      $('#error').slideUp();
       $.post('/tweets/', tweetText).then(() => {
-        $('.tweet-container').remove()
         loadTweets();
       })
+    } else {
+      errorType();
     }
-    
   })
 });
 
