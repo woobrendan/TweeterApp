@@ -34,7 +34,6 @@ main {
   width: 90%;
   z-index: 1;
   display: flex; 
-  justify-content: center;
   flex-direction: column-reverse;
 }
 /* Screen responsiveness */
@@ -63,5 +62,9 @@ main {
 
   .profile-header {
     margin-top: 40px;
+  }
+
+  .tweet-header h3 {
+    overflow-wrap: anywhere;
   }
 }
