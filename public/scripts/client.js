@@ -74,10 +74,7 @@ $(() => {
   //on form submit of new tweet
   $('.new-tweet-form').on('submit', function(event){
     event.preventDefault();
-    // const tweetText =  $('.tweet-container').text(unsafeTweetText)
-    
     const tweetText = $(this).serialize();
-    console.log('this is event: ', $('<article>').text(tweetText))
 
     if (tweetText.length < 6) {
       alert('Tweet cannot be empty')
