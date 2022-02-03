@@ -36,6 +36,7 @@ main {
   display: flex; 
   flex-direction: column-reverse;
 }
+
 /* Screen responsiveness */
 @media only screen and (min-width: 1024px) {
   body {
@@ -43,13 +44,10 @@ main {
     max-width: 1024px;
     align-items: baseline;
   } 
-
-
  .profile-header {
    margin-right: 100px;
    margin-top: 40px;
-   } 
-
+  } 
   .container {
     margin-top: 140px;
   } 
