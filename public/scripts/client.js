@@ -1,8 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 const checkForError = (() => {
   let tweet = document.forms['new-tweet-form']['text'].value;
   if (!tweet || tweet.length > 140) {
@@ -17,13 +12,16 @@ const errorType = (() => {
   } else {
     $('#error').html('⛔⛔ Tweets cannot be over 140 characters! ⛔⛔');
   }
-
 });
 
 const resetTextForm = () => {
   $('.counter').html(140);
   $('#tweet-text').val('');
 };
+
+const slideForm = () => {
+  $('.new-tweet').slideToggle();
+}
 
 const escape = function(str) {
   let div = document.createElement("div");
