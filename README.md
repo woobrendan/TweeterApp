@@ -7,10 +7,13 @@ Tweeter is a simple, single-page AJAX-based Twitter clone that helps web bootcam
 !["Screenshot of App on Start"](https://github.com/wootang9/TweeterApp/blob/master/public/docs/On-Start-Up.png)
 
 
-App uses AJAX to insert newly created posts to the top of the feed without having to refresh the page.
+App uses AJAX to insert newly created posts to the top of the feed without having to refresh the page. The page will also dynamically change depending on the viewport of the user, supporting smaller tablet sized screens or desktop screens.
+
+
+!["Screenshot of first post"](https://github.com/wootang9/TweeterApp/blob/master/public/docs/First-Post.png?raw=true)
 
 The app also highlights a tweet on hover!
-!["Screenshot of first post"](https://github.com/wootang9/TweeterApp/blob/master/public/docs/First-Post.png?raw=true)
+
 
 ## Getting Started
 
