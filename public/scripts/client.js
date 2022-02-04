@@ -1,3 +1,4 @@
+//Check for errors when composing tweets
 const checkForError = (() => {
   let tweet = document.forms['new-tweet-form']['text'].value;
   if (!tweet || tweet.length > 140) {
@@ -14,13 +15,16 @@ const errorType = (() => {
   }
 });
 
+//compose tweet reset counter and remove text from textarea
 const resetTextForm = () => {
   $('.counter').html(140);
   $('#tweet-text').val('');
 };
 
+//Write a tweet toggle display for Compose Tweet
 const slideForm = () => {
   $('.new-tweet').slideToggle();
+  $('#tweet-text').focus();
 }
 
 const escape = function(str) {
@@ -64,7 +68,6 @@ const renderTweets = function(tweetArr) {
 
 //Doc on ready
 $(() => {
-  
   const loadTweets = function() {
     resetTextForm();
     $('.tweets-container').empty();
@@ -78,12 +81,11 @@ $(() => {
   };
   loadTweets();
   
-  //on form submit of new tweet
   $('.new-tweet-form').on('submit', function(event) {
     event.preventDefault();
-    // checkForError();
-    const tweetText = $(this).serialize();
 
+    const tweetText = $(this).serialize();
+    
     if (!checkForError()) {
       $('#error').slideUp();
       $.post('/tweets/', tweetText).then(() => {
