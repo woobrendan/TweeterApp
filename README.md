@@ -12,7 +12,9 @@ App uses AJAX to insert newly created posts to the top of the feed without havin
 
 !["Screenshot of first post"](https://github.com/wootang9/TweeterApp/blob/master/public/docs/First-Post.png?raw=true)
 
-The app also highlights a tweet on hover!
+The app also highlights a tweet on hover and keeps track of how many characters are left for your tweet! It has responsive design to meet the requirements of the users device, adjusting to fit accordingly.
+
+!["Screenshot of mobile version"](https://github.com/wootang9/TweeterApp/blob/master/public/docs/mobile-view.png?raw=true)
 
 
 ## Getting Started
