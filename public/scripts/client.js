@@ -87,7 +87,7 @@ $(() => {
     const tweetText = $(this).serialize();
     
     if (!checkForError()) {
-      $('#error').slideUp();
+      $('#error').html('');
       $.post('/tweets/', tweetText).then(() => {
         loadTweets();
       });
